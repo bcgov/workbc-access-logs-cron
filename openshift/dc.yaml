@@ -91,4 +91,4 @@ parameters:
   displayName: Image Namespace
   name: IMAGE_NAMESPACE
   required: true
-  value: 551bf1-tools
+  value: 1c4f9c-tools

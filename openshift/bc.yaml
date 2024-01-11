@@ -52,7 +52,7 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: workbc-sam-chefs-cron
+  value: workbc-access-logs-cron
 - description: A name suffix used for all objects
   displayName: Suffix
   name: SUFFIX
