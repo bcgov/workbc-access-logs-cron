@@ -7,7 +7,7 @@ cron.schedule("30 2 * * *", async () => {
     console.log("========== BEGIN CRON JOB ==========")
     if (!process.env.GET_TOKEN_URL || !process.env.SERVICE_ACCOUNT_USERNAME || !process.env.SERVICE_ACCOUNT_PASSWORD
         || !process.env.GET_EVENTS_URL || !process.env.BUCKET || !process.env.BUCKET_KEY_ID || !process.env.BUCKET_KEY
-        || !process.env.S3_ENDPOINT || !process.env.BUCKET_REGION
+        || !process.env.S3_ENDPOINT || !process.env.BUCKET_REGION || !process.env.ENVIRONMENT
     ) {
         console.log("missing environment variable(s) - aborting cron job")
         return
@@ -77,9 +77,9 @@ const uploadFile = async(file: any) => {
       }
     })
     const currentDate = getDateString(new Date())
-    const fileID = currentDate
+    const fileID = `${currentDate}-${process.env.ENVIRONMENT}`
     const fileName = `${currentDate}.json`
-    const key = currentDate
+    const key = `${currentDate}-${process.env.ENVIRONMENT}`
     const params = {
       Bucket: process.env.BUCKET,
       Key: key,
