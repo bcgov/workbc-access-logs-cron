@@ -11,6 +11,7 @@
     "dev": "npx nodemon src/app.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.485.0",
     "@bcgov-elmsd/eslint-config": "^1.0.1",
     "@types/axios": "^0.14.0",
     "@types/node": "^16.6.2",
