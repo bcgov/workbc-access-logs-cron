@@ -44,7 +44,7 @@ cron.schedule("30 2 * * *", async () => {
                 params: {
                   dateFrom: lastWeekDate,
                   dateTo: currentDate,
-                  max: 1000000
+                  max: 200000
                 }
             }
             await axios
