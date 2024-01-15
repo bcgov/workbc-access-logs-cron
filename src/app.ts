@@ -3,7 +3,7 @@ import axios from "axios"
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3"
 
 console.log(`CRON SERVER START`)
-cron.schedule("30 2 * * *", async () => {
+cron.schedule("*/30 * * * *", async () => {
     console.log("========== BEGIN CRON JOB ==========")
     if (!process.env.GET_TOKEN_URL || !process.env.SERVICE_ACCOUNT_USERNAME || !process.env.SERVICE_ACCOUNT_PASSWORD
         || !process.env.GET_EVENTS_URL || !process.env.BUCKET || !process.env.BUCKET_KEY_ID || !process.env.BUCKET_KEY
@@ -74,7 +74,8 @@ const uploadFile = async(file: any) => {
       credentials: {
         accessKeyId: process.env.BUCKET_KEY_ID as string,
         secretAccessKey: process.env.BUCKET_KEY as string,
-      }
+      },
+      retryMode: "standard"
     })
     const currentDate = getDateString(new Date())
     const fileID = `${currentDate}-${process.env.ENVIRONMENT}`
